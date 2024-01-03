@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Calendly//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTAMP:20231220T025351Z
+UID:calendly-871902580
+DTSTART:20231221T010000Z
+DTEND:20231221T013000Z
+CLASS:PUBLIC
+DESCRIPTION:Event Name: Full Stack Tutoring Meeting\nEvent Description: Sch
+ edule an appointment to speak with a full stack tutor. Learn valuable info
+ rmation such as:- Clarifying difficult concepts- Improve study skills- Pro
+ vide valuable feedback on assignments and exams- Help build confidence- D
+ evelop effective learning strategiesWe look forward to meeting with you an
+ d helping you on your educational journey!Reminder: Please come to the mee
+ ting loaded up and prepared\, unless setup is the question\, so we can bes
+ t utilize our time.\nDate & Time: 08:00pm - 08:30pm (Eastern Time - US & C
+ anada) on Wednesday\, December 20\, 2023\nLocation: This is a Zoom web con
+ ference.\n\nYou can join this meeting from your computer\, tablet\, or sma
+ rtphone.\nhttps://us02web.zoom.us/j/87346790454\n\nYou can also dial in us
+ ing your phone.\nUS: +1 301 715 8592\, +1 305 224 1968\, +1 309 205 3325\,
+  +1 312 626 6799\, +1 646 876 9923\, +1 646 931 3860\, +1 253 205 0468\, +
+ 1 253 215 8782\, +1 346 248 7799\, +1 360 209 5623\, +1 386 347 5053\, +1 
+ 507 473 4847\, +1 564 217 2000\, +1 669 444 9171\, +1 669 900 6833\, +1689
+ 2781000\, +1 719 359 4580\nMeeting ID: 873-467-90454\n\nFind your local nu
+ mber: https://us02web.zoom.us/u/ktiqpJMlc\n\nCohort #: 44\n\nFSDI Unit Num
+ ber: 103\n\nBrief issue description: need help converting temperature in j
+ ava script\n\nNeed to make changes to this event?\nCancel: https://calendl
+ y.com/cancellations/1c61675e-8de8-468f-b1e0-989a70950a86\nReschedule: http
+ s://calendly.com/reschedulings/1c61675e-8de8-468f-b1e0-989a70950a86\n
+LOCATION:https://us02web.zoom.us/j/87346790454
+ORGANIZER;CN=Will Bumbaugh:no-reply@calendly.com
+SUMMARY:Full Stack Tutoring Meeting with Will Bumbaugh
+TRANSP:OPAQUE
+ATTENDEE:mailto:cjnj08@gmail.com
+END:VEVENT
+END:VCALENDAR
