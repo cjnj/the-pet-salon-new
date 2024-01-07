@@ -16,14 +16,36 @@ let petSalon = {
     
 }
 
+let counter=0;
+
 //object constructor (function)
-function Pet(name,age,gender,service,breed){
+function Pet(name,age,gender,service,breed,origin){
     this.name=name;
     this.age=age;
     this.gender=gender;
     this.service=service;
     this.breed=breed;
+    this.origin=origin;
+    this.id=counter++;
 }
+
+function isValid(aPet){
+    let validation=true;
+    $("input").removeClass("bg-red");
+    if(aPet.name==""){
+        validation=false;
+        $("txtName").addClass("bg-red");
+    }
+
+    if(aPet.service==""){
+        validation=false;
+        $("txtServices").addClass("bg-red");
+    }
+
+    return validation;
+}
+
+
 
 function register(){
     console.log("Registering");
@@ -33,27 +55,60 @@ function register(){
     let inputGender = document.getElementById("txtGender").value;
     let inputService = document.getElementById("txtService").value;
     let inputBreed = document.getElementById("txtBreed").value;
+    let inputOrigin = document.getElementById("txtOrigin").value;
 
     //creating the obj
-    let newPet = new Pet(inputName,inputAge,inputGender,inputService,inputBreed);
+    let newPet = new Pet(inputName,inputAge,inputGender,inputService,inputBreed,inputOrigin);
 
     //push the object
-    petSalon.pets.push(newPet);
+    if(isValid(newPet)==true){
+        petSalon.pets.push(newPet);
+        //display the pets array on the console
+        displayPetCards();
+        $("inputs").val("");//clear the inputs
+        showNotification("notifications","alert-success","Regisration was successful");
+    }else{
+        showNotification(("notificaitons"),"alert-danger","Please add all the required fields!");
+    }
+    
+}    
 
-    // display the pets array on thr console
-    console.log(petSalon.pets);
+function showNotification(id,styling,message){
+    $("#"+id).removeClass("alert-danger");
+    $("#"+id).removeClass("alert-success");
+    $("#"+id).text(message).addClass(styling).fadeIn(300).delay(2000).slideup(300);
 }
 
+
+function deletePet(petID){
+    console.log("Deleting pet " + petID);
+    let deleteIndex;
+    document.getElementById(petID).remove();//remove from HTML
+    for(let i=0;i<petSalon.pets.length;i++){//traveling the array
+        let pet = petSalon.pets[i]; //getting the current pet
+        if(pet.id==petID){
+            deleteIndex=i;//we found the pet, store the index
+        }
+    }
+    petSalon.pets.splice(petID,1);//remove the petfrom the array
+}
+
+
+function init(){
 // creating pets using consrtuctor
-let p1 = new Pet("Daffy Duck",86,"Male","Grooming","Duck")
-let p2 = new Pet("Chester",77,"Male","Nail Cut","Cheeta")
-let p3 = new Pet("tom",82,"Male","Vaccines","Cat")
-let p4 = new Pet("jerry",74,"Male","training","Mouse")
-let p5 = new Pet("tweety",73,"Male","nueter","Bird")
-
-
+let p1 = new Pet("Daffy Duck",86,"Male","Grooming","Duck","California");
+let p2 = new Pet("Chester",77,"Male","Nail Cut","Cheeta","New Jersey");
+let p3 = new Pet("tom",82,"Male","Vaccines","Cat","Montana");
+let p4 = new Pet("jerry",74,"Male","training","Mouse","Texas");
+let p5 = new Pet("tweety",73,"Male","nueter","Bird","Florida");
 
 // pushing pets into the pets array
-petSalon.pets.push(p1,p2,p3,p4,p5)
+petSalon.pets.push(p1,p2,p3,p4,p5);
 
-console.log(petSalon.pets)
+displayPetCards();
+}
+
+//hook events
+$("#notifications").hide();
+
+window.onload=init; // waits for html to render

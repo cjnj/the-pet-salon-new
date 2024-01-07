@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style/register.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="services.html">
 </head>
 <body>
     <div class="hdiv">
@@ -21,13 +23,17 @@
 
     <div>
         <main>
-            <div>
+            <div class="h2">
+                
                 <h2>Register a new pet</h2>
                 
+                <div id="notifications" class="alert alert-success" class="bg-red">
+                    Notifications will be here
+                </div>
+                
                 <div>
-                    <label>Name</label>
+                    <label>Name*</label>
                     <input type="text" id="txtName">
-                    
                 </div>
                 
                 <div>
@@ -41,7 +47,7 @@
                 </div>
 
                 <div>
-                    <label>Service</label>
+                    <label>Service*</label>
                     <input type="text" id="txtService">
                 </div>
 
@@ -50,9 +56,42 @@
                     <input type="text" id="txtBreed">
                 </div>
 
+                <div>
+                    <label>Origin</label>
+                    <input type="text" id="txtOrigin">
+                </div>
+
                 <button onclick="register()">Register</button>
 
             </div>
+
+            <h2 class="h2">Registered Pets</h2>
+
+
+            
+        <div class="tdiv">  
+            <table class="table">
+                    <tr>
+                        <th>NAME</th>
+                        <th>AGE</th>
+                        <th>GENDER</th>
+                        <th>SERIVICE</th>
+                        <th>BREED</th>
+                        <th>ORIGIN</th>
+                    </tr>
+                    <tbody id="pets">
+
+
+                    </tbody>
+
+            </table>
+        </div>      
+        
+        
+        
+        
+        
+        </div>
         </main>
     </div>
 
@@ -61,9 +100,13 @@
         
     </div>
 </footer>
+    
 
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./scripts/register.js"></script>
-
+    <script src="./scripts/display.js"></script>
+    
 
 
 </body>
