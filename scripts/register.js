@@ -93,6 +93,12 @@ function deletePet(petID){
     petSalon.pets.splice(petID,1);//remove the petfrom the array
 }
 
+function addServices(){
+        let services = readArray();
+        for(let i=0;i<services.length;i++){
+            $("#txtServices").append(`<option value="${services[i].description}">${services[i].description}</option>`)
+        }
+    }
 
 function init(){
 // creating pets using consrtuctor
@@ -104,7 +110,7 @@ let p5 = new Pet("tweety",73,"Male","nueter","Bird","Florida");
 
 // pushing pets into the pets array
 petSalon.pets.push(p1,p2,p3,p4,p5);
-
+addServices();
 displayPetCards();
 }
 

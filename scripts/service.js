@@ -1,29 +1,57 @@
 let services=[];//array
 
 //crate the contructor
-function Service(description,price){
+function Service(description,price,notificaiton){
     this.description=description;
     this.price=price;
+    this.notificaiton=notificaiton;
 }
-//crate the register function
+
+function isValid(newService){
+    let validation=true;
+    $("input").removeClass("bg-red");
+    if(newService.description==""){
+        validation=false;
+        $("txtDescription").addClass("bg-red");
+    }
+
+    if(newService.price==""){
+        validation=false;
+        $("txtPrice").addClass("bg-red");
+    }
+
+    return validation;
+}
+
+//create register function
 function register(){
-    console.log("adding a new service")
-    
     let inputDescription = $("#txtDescription").val();
-    let inputPrice = $("#txtPrice").val();
+    let inputPrice= $("#txtPrice").val();
 
     let newService = new Service(inputDescription,inputPrice);
-    services.push(newService);
-
-    console.log(services)
+    if(isValid(newService)==true){
+    saveArray(services);
+    $("input").val();//clear
+    showNotification("notifications","alert-success","Service added to registry");
+    }else{
+        alert("enter inputs!");
+    }
 }
+
+function showNotification(id,styling,message,notificaiton){
+    $("#"+id).removeClass("alert-danger");
+    $("#"+id).removeClass("alert-success");
+    $("#"+id).text(message).addClass(styling).fadeIn(300).delay(2000).slideup(300);
+}
+
 //create the init function
 function init(){
-    let s1 = new Service("grooming",20);
-    services.push(s1)
+    let s1 = new Service("Grooming",20);
+    services.push(s1);
     //hook events
     $("#btnRegister").on('click',register);
 }
 
 //wait for render the HTML
 window.onload=init;
+
