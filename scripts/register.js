@@ -19,13 +19,14 @@ let petSalon = {
 let counter=0;
 
 //object constructor (function)
-function Pet(name,age,gender,service,breed,origin){
+function Pet(name,age,gender,service,breed,origin,price){
     this.name=name;
     this.age=age;
     this.gender=gender;
     this.service=service;
     this.breed=breed;
     this.origin=origin;
+    this.price=price;
     this.id=counter++;
 }
 
@@ -56,15 +57,16 @@ function register(){
     let inputService = document.getElementById("txtService").value;
     let inputBreed = document.getElementById("txtBreed").value;
     let inputOrigin = document.getElementById("txtOrigin").value;
-
+    
     //creating the obj
-    let newPet = new Pet(inputName,inputAge,inputGender,inputService,inputBreed,inputOrigin);
+    let newPet = new Pet(inputName,inputAge,inputGender,inputService,inputBreed,inputOrigin,getServicePrice(inputService));
 
     //push the object
     if(isValid(newPet)==true){
         petSalon.pets.push(newPet);
         //display the pets array on the console
         displayPetCards();
+        console.log(newPet)
         $("inputs").val("");//clear the inputs
         showNotification("notifications","alert-success","Regisration was successful");
     }else{
@@ -72,6 +74,18 @@ function register(){
     }
     
 }    
+
+function getServicePrice(serviceDescription){
+    let services = readArray();//get services list from LS
+    let price;
+    for(let i=0;i<services.length;i++){// travel the description
+        let service = services[i];
+        if(service.Description==serviceDescription){// finding the description
+            price=service.price;//asign the price
+        }
+        //console.log(serivces[i]);
+    }
+}
 
 function showNotification(id,styling,message){
     $("#"+id).removeClass("alert-danger");
@@ -102,19 +116,20 @@ function addServices(){
 
 function init(){
 // creating pets using consrtuctor
-let p1 = new Pet("Daffy Duck",86,"Male","Grooming","Duck","California");
-let p2 = new Pet("Chester",77,"Male","Nail Cut","Cheeta","New Jersey");
-let p3 = new Pet("tom",82,"Male","Vaccines","Cat","Montana");
-let p4 = new Pet("jerry",74,"Male","training","Mouse","Texas");
-let p5 = new Pet("tweety",73,"Male","nueter","Bird","Florida");
+let p1 = new Pet("Daffy Duck",86,"Male","Grooming","Duck","California",getServicePrice("Grooming"));
+let p2 = new Pet("Chester",77,"Male","Nail Cut","Cheeta","New Jersey",getServicePrice("Nail Cut"));
+let p3 = new Pet("tom",82,"Male","Vaccines","Cat","Montana",getServicePrice("Vaccines"));
+let p4 = new Pet("jerry",74,"Male","Training","Mouse","Texas",getServicePrice("Training"));
+let p5 = new Pet("tweety",73,"Male","Nueter","Bird","Florida",getServicePrice("Nueter"));
 
 // pushing pets into the pets array
 petSalon.pets.push(p1,p2,p3,p4,p5);
 addServices();
 displayPetCards();
+$("#notifications").hide();
 }
 
 //hook events
-$("#notifications").hide();
+
 
 window.onload=init; // waits for html to render

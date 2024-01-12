@@ -1,48 +1,50 @@
 let services=[];//array
 
 //crate the contructor
-function Service(description,price,notificaiton){
+function Service(description,price){
     this.description=description;
     this.price=price;
-    this.notificaiton=notificaiton;
+//    this.notificaiton=notificaiton;
 }
 
-function isValid(newService){
-    let validation=true;
-    $("input").removeClass("bg-red");
-    if(newService.description==""){
-        validation=false;
-        $("txtDescription").addClass("bg-red");
-    }
-
-    if(newService.price==""){
-        validation=false;
-        $("txtPrice").addClass("bg-red");
-    }
-
-    return validation;
-}
+//function isValid(newService){
+//    let validation=true;
+//    $("input").removeClass("bg-red");
+//    if(newService.description==""){
+//       validation=false;
+//        $("txtDescription").addClass("bg-red");
+//    }
+//
+//    if(newService.price==""){
+//        validation=false;
+//        $("txtPrice").addClass("bg-red");
+//    }
+//
+//    return validation;
+//}
 
 //create register function
 function register(){
+    
     let inputDescription = $("#txtDescription").val();
     let inputPrice= $("#txtPrice").val();
 
     let newService = new Service(inputDescription,inputPrice);
-    if(isValid(newService)==true){
-    saveArray(services);
-    $("input").val();//clear
-    showNotification("notifications","alert-success","Service added to registry");
-    }else{
-        alert("enter inputs!");
-    }
+    saveArray(newService);
+//    if(isValid(newService)==true){
+//    saveArray(newS);
+//    $("input").val();//clear
+//    showNotification("notifications","alert-success","Service added to registry");
+//    }else{
+//       alert("enter inputs!");
+//   }
 }
 
-function showNotification(id,styling,message,notificaiton){
-    $("#"+id).removeClass("alert-danger");
-    $("#"+id).removeClass("alert-success");
-    $("#"+id).text(message).addClass(styling).fadeIn(300).delay(2000).slideup(300);
-}
+//function showNotification(id,styling,message,notificaiton){
+//    $("#"+id).removeClass("alert-danger");
+//    $("#"+id).removeClass("alert-success");
+//    $("#"+id).text(message).addClass(styling).fadeIn(3000).delay(2000).slideup(3000);
+//}
 
 //create the init function
 function init(){

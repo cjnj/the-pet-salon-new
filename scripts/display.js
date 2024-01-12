@@ -1,5 +1,5 @@
 function displayPetCards(){
-    const DIV = document.getElementById("pets");
+    const div = document.getElementById("pets");
     let card="";
     //travel the array
     for(let i=0;i<petSalon.pets.length;i++){
@@ -17,6 +17,6 @@ function displayPetCards(){
     </tr>
     `
     }
-    DIV.innerHTML=card;
+    div.innerHTML=card;
     //insert the HTML template into the register
 }

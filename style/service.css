@@ -1,3 +1,14 @@
+body{
+    font-family: cursive; 
+    image-rendering: auto;
+    border: 20px darkolivegreen;
+    background-image: url(./img/ace.jpg);
+    color: white;
+}
+
+
+
+
 .hdiv{
     text-size-adjust: 40px;
     border: 6px solid black;
@@ -20,3 +31,5 @@
 .h2{
     text-align: center;
 }
+
+
